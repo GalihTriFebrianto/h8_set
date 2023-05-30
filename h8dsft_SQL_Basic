@@ -1,0 +1,10 @@
+SELECT trip_id, start_date, subscriber_type, start_station_name, start_station_id FROM bigquery-public-data.san_francisco.bikeshare_trips
+SELECT station_id, name, landmark FROM bigquery-public-data.san_francisco.bikeshare_stations
+SELECT tablea.trip_id, tablea.start_date, tablea.subscriber_type, tablea.start_station_name, tablea.start_station_id, tableb.station_id, tableb.name, tableb.landmark
+FROM bigquery-public-data.san_francisco.bikeshare_trips AS tablea
+INNER JOIN bigquery-public-data.san_francisco.bikeshare_stations AS tableb
+ON tablea.start_station_id = tableb.station_id WHERE tablea.start_date BETWEEN '2016-01-01 00:00:00 UTC' AND '2016-03-31 23:59:59 UTC' AND tablea.subscriber_type='Subscriber' AND tableb.landmark='Redwood City'
+SELECT tablea.trip_id, tablea.start_date, tablea.subscriber_type, tablea.start_station_name, tablea.start_station_id, tableb.station_id, tableb.name, tableb.landmark
+FROM bigquery-public-data.san_francisco.bikeshare_trips AS tablea
+INNER JOIN bigquery-public-data.san_francisco.bikeshare_stations AS tableb
+ON tablea.start_station_id = tableb.station_id WHERE tablea.start_date BETWEEN '2016-04-01 00:00:00 UTC' AND '2016-06-30 23:59:59 UTC' AND tablea.subscriber_type='Subscriber' AND tableb.landmark='Redwood City'
